@@ -6,6 +6,7 @@ from datetime import datetime
 from fabric.api import local
 import os
 
+
 def do_pack():
     """generates a .tgz archive from the contents of the web_static folder"""
     currenttime = datetime.now().strftime("%Y%m%d%H%M%S")
