@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """
-    Define a funcion that generates a .tgz archive from the contents 
+    Define a funcion that generates a .tgz archive from the contents
 """
 from datetime import datetime
-from fabric.api import local;
+from fabric.api import local
 import os
 
 
@@ -13,8 +13,7 @@ def do_pack():
 
     os.makedirs("versions", exist_ok=True)
     res = local(f"tar -cf versions/web_static_{currenttime}.tgz web_static")
-    if res.exited == 0:
-        return None
-    else:
+    if res.succeeded:
         return res
-    
+    else:
+        return None
