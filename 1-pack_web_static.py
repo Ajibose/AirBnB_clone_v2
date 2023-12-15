@@ -12,7 +12,7 @@ def do_pack():
     currenttime = datetime.now().strftime("%Y%m%d%H%M%S")
 
     os.makedirs("versions", exist_ok=True)
-    res = local(f"tar -cf versions/web_static_{currenttime}.tgz web_static/")
+    res = local(f"tar -cf versions/web_static_{currenttime}.tgz web_static")
     if res.exited == 0:
         return None
     else:
