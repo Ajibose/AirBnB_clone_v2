@@ -31,11 +31,11 @@ def do_deploy(archive_path):
     r = put(archive_path, "/tmp/")
     run(f"sudo mkdir -p /data/web_static/releases/{file_no_ext}/")
     run(f"sudo tar -xzf /tmp/{filename} -C "
-        f"/data/web_static/releases/{file_no_ext}/")
-    # run(f"mv /data/web_static/releases/{file_no_ext}/web_static/*
-    # /data/web_static/releases/{file_no_ext}")
+        f"/data/web_static/releases/{file_no_ext}")
+    run(f"sudo mv /data/web_static/releases/{file_no_ext}/web_static/* "
+        f"/data/web_static/releases/{file_no_ext}")
     run(f"sudo rm -rf /data/web_static/releases/{file_no_ext}/web_static")
     run(f"sudo rm -rf /tmp/{filename}")
-    run("rm -rf /data/web_static/current")
+    run("sudo rm -rf /data/web_static/current")
     run(f"sudo ln -s /data/web_static/releases/{file_no_ext}/ "
         f"/data/web_static/current")
